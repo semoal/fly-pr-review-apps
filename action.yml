@@ -38,3 +38,6 @@ inputs:
   ha:
     description: Create spare machines that increases app availability (default false)
     default: false
+  prnumber:
+    description: Customize the PR number used in the app name (default is the PR number of the current workflow run)
+    default: false

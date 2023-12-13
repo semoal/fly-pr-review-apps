@@ -7,10 +7,10 @@ if [ -n "$INPUT_PATH" ]; then
   cd "$INPUT_PATH" || exit
 fi
 
-PR_NUMBER=$(jq -r .number /github/workflow/event.json)
-if [ -z "$PR_NUMBER" ]; then
-  echo "This action only supports pull_request actions."
-  exit 1
+if [ -n "$INPUT_PRNUMBER" ]; then
+  PR_NUMBER=$INPUT_PRNUMBER
+else
+  PR_NUMBER=$(jq -r .number /github/workflow/event.json)
 fi
 
 GITHUB_REPOSITORY_NAME=${GITHUB_REPOSITORY#$GITHUB_REPOSITORY_OWNER/}
